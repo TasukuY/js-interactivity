@@ -26,17 +26,30 @@ const addMovie = event => {
 const deleteMovie = event => {
     //console.log('function called!')
     event.target.parentNode.remove();
-    message.textContent = 'Movie deleted!';
+    console.log(event.target.parentNode);
+    message.textContent = `${event.target.parentNode.firstChild.textContent} deleted!`;
+    revealMessage();
 }
 
 const crossOffMovie = event => {
     event.target.classList.toggle('checked');
     if(event.target.classList.contains('checked')){
-        message.textContent = 'Movie watched!'
+        message.textContent = `${event.target.textContent} watched!`;
     }else{
-        message.textContent = 'Movie added back!'
+        message.textContent = `${event.target.textContent} added back!`;
     }
+    revealMessage();
 }
+
+const revealMessage = () => {
+    message.className = '';
+    setTimeout(hideMessage, 1000);
+}
+
+const hideMessage = () => {
+    message.className = 'hide';
+}
+
 
 //addEventListener
 form.addEventListener('submit', addMovie);
