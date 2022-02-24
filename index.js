@@ -27,7 +27,7 @@ const deleteMovie = event => {
     //console.log('function called!')
     event.target.parentNode.remove();
     console.log(event.target.parentNode);
-    message.textContent = `${event.target.parentNode.firstChild.textContent} deleted!`;
+    message.textContent = `${event.target.parentNode.childNodes[0].textContent} deleted!`;
     revealMessage();
 }
 
